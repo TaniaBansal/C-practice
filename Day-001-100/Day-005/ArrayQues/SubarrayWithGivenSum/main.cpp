@@ -26,10 +26,31 @@ int main(){
     int S;
     cout<<"Enter value of s : ";
     cin>>S;
-    int start=0;
-    int last =0;
-    for(int i=0; i<n; i++){
-        
-    }
+    int i=0, j=0, st = -1, en = -1, sum =0;
+        while(j<n && sum+a[j] <= S){
+            sum = sum+ a[j];
+            j++;
+        }
 
+        if(sum == S){
+            cout<<i+1<<" "<<j<<endl;
+            return 0;
+        }
+
+        while(j<n){
+            sum = sum + a[j];
+            while(sum > S){
+                sum = sum - a[i];
+                i++;
+            }
+            
+            if(sum == S){
+                st = i+1;
+                en = j+1;
+               break;
+            }
+            j++;
+       }
+     cout<<st<<" "<<en<<endl;
+     return 0;
 }
